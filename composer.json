@@ -1,0 +1,17 @@
+{
+    "name": "hexlet/code",
+    "autoload": {
+        "psr-4": {
+            "Hexlet\\Code\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "D-sorder",
+            "email": "creepsta6001@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "fidry/makefile": "^1.1"
+    }
+}

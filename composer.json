@@ -1,6 +1,7 @@
 {
     "name": "hexlet/code",
-    "license":"MIT",
+    "description": "jst4learningxdxd",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Hexlet\\Code\\": "src/"
@@ -15,8 +16,10 @@
             "email": "creepsta6001@gmail.com"
         }
     ],
-    "description":"jst4learningxdd",
     "require-dev": {
         "fidry/makefile": "^1.1"
+    },
+    "require": {
+        "wp-cli/php-cli-tools": "^0.12.8"
     }
 }

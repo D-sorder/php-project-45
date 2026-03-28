@@ -1,16 +1,21 @@
 {
     "name": "hexlet/code",
+    "license":"MIT",
     "autoload": {
         "psr-4": {
             "Hexlet\\Code\\": "src/"
         }
     },
+    "bin": [
+    	"bin/brain-games"
+    ],
     "authors": [
         {
             "name": "D-sorder",
             "email": "creepsta6001@gmail.com"
         }
     ],
+    "description":"jst4learningxdd",
     "require-dev": {
         "fidry/makefile": "^1.1"
     }

@@ -44,7 +44,7 @@ $rounds = 3;
 for ($i = 0; $i < $rounds; $i++) {
 	[$num, $rightAnswer] = makeRound();
 
-	line("question: %s", $num);
+	line("Question: %s", $num);
 	$userAnswer = prompt("Your answer");
 	if ($userAnswer === $rightAnswer) {
 		line('Correct!');

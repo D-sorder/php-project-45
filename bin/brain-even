@@ -29,8 +29,9 @@ foreach ($numbers as $num) {
 	} else {
 		line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answ, $correctAnsw);
 		line("Let's try again, %s!", $name);
-		break;
+		exit(0);
 	};
 
-	line("Congratulations, %s!", $name);
 }
+
+line("Congratulations, %s!", $name);

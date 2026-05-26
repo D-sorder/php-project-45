@@ -41,8 +41,9 @@ for($i = 0; $i < $rounds; $i++) {
 		line('Correct!');
 	} else {
 		line("'%s' is a wrong answer ;(. Correct answer was '%s'", $answer, $correctAnswer);
-		line("let's try again, %s!", $name);
+		line("Let's try again, %s!", $name);
 		return;
 	}
-	line('Congratulations, %s!', $name);
 }
+
+line('Congratulations, %s!', $name);

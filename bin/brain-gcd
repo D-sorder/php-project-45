@@ -1,0 +1,50 @@
+#!/usr/bin/env php
+<?php
+
+namespace BrainGames\gcd;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../src/Cli.php';
+
+use function cli\line;
+use function cli\prompt;
+
+function findGcd ($a, $b)
+{
+	while($b !== 0) {
+		$temp = $b;
+		$b = $a % $b;
+		$a = $temp;
+	}
+	return abs($a);
+}
+
+function generateRound()
+{
+        $num1 = rand(1, 100);
+        $num2 =rand(1, 100);
+
+        $question = "{$num1} {$num2}";
+	$result = findGcd($num1, $num2);
+    
+        return [$question, $result];
+}
+
+$rounds = 3;
+
+line('Find the greatest common divisor of given numbers.');
+
+for ($i = 0; $i < $rounds; $i++) {
+	[$question, $gcd] = generateRound();
+
+	line('Question: %s', $question);
+	$answer = prompt('Your answer');
+	if ($answer == $gcd) {
+		line('Correct!');
+	} else {
+		line("'%s' is wrong answer ;(. Correct answer was '%s'", $answer, $gcd);
+		line("let's try again, %s!", $name);
+		return;
+	}
+	line("Congratulations, %s!", $name);
+}

@@ -1,0 +1,48 @@
+#!/usr/bin/env php
+<?php
+
+namespace BrainGames\gcd;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../src/Cli.php';
+
+use function cli\line;
+use function cli\prompt;
+
+function makeRound ()
+{
+	$progressionLength = rand(5, 15);
+	$step = rand(2, 5);
+	$start = rand(1, 15);
+
+	$progression = [];	
+	for ($i = 1; $i < $progressionLength; $i++) {
+		$progression[] = $start + $i * $step;
+	}
+	
+	$hiddenIndex = array_rand($progression);
+	
+	$correctAnswer = $progression[$hiddenIndex];
+	$progression[$hiddenIndex] = '..';
+	
+	$question = implode(' ', $progression);
+	
+	return [$question, $correctAnswer];
+}
+
+$rounds = 3;
+line('What number is missing in the progression?');
+
+for($i = 0; $i < $rounds; $i++) {
+	[$question, $correctAnswer] = makeRound();
+	line('Question: %s', $question);
+	$answer = prompt('Your answer');
+	if ($answer == $correctAnswer) {
+		line('Correct!');
+	} else {
+		line("'%s' is a wrong answer ;(. Correct answer was '%s'", $answer, $correctAnswer);
+		line("let's try again, %s!", $name);
+		return;
+	}
+	line('Congratulations, %s!', $name);
+}

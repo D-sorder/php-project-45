@@ -37,6 +37,7 @@ function generateRound()
 $rounds = 3;
 for ($i = 0; $i < $rounds; $i++) {
         [$question, $result] = generateRound();
+	line("What is the result of the expression?");
         line("Question: %s", $question);
         $answer = prompt('Your answer: ');
         if ($answer == $result) {

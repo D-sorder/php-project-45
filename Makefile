@@ -1,6 +1,6 @@
 install:
 	composer install
-brain_games:
+brain-games:
 	./bin/brain-games
 validate:
 	composer validate

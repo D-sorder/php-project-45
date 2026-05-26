@@ -43,7 +43,7 @@ for ($i = 0; $i < $rounds; $i++) {
 		line('Correct!');
 	} else {
 		line("'%s' is wrong answer ;(. Correct answer was '%s'", $answer, $gcd);
-		line("let's try again, %s!", $name);
+		line("Let's try again, %s!", $name);
 		return;
 	}
 	line("Congratulations, %s!", $name);

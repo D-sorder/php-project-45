@@ -8,7 +8,7 @@ function getDescription()
 
 function generateRound()
 {
-        $progressionLength = rand(5, 15);
+        $progressionLength = rand(6, 15);
         $step = rand(2, 5);
         $start = rand(1, 15);
 

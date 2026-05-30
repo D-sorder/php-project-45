@@ -5,8 +5,6 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Cli\greet;
 
-require_once __DIR__ . '/../src/Cli.php';
-
 function run($description, $generateRound)
 {
 	$name = greet();

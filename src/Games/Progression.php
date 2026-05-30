@@ -1,4 +1,5 @@
 <?php
+
 namespace BrainGames\Games\Progression;
 
 function getDescription()
@@ -13,9 +14,9 @@ function generateRound()
         $start = rand(1, 15);
 
         $progression = [];
-        for ($i = 1; $i < $progressionLength; $i++) {
-                $progression[] = $start + $i * $step;
-        }
+    for ($i = 1; $i < $progressionLength; $i++) {
+            $progression[] = $start + $i * $step;
+    }
 
         $hiddenIndex = array_rand($progression);
 

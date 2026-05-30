@@ -1,13 +1,14 @@
 <?php
+
 namespace BrainGames\Games\Gcd;
 
-function findGcd ($a, $b)
+function findGcd($a, $b)
 {
-        while($b !== 0) {
-                $temp = $b;
-                $b = $a % $b;
-                $a = $temp;
-        }
+    while ($b !== 0) {
+            $temp = $b;
+            $b = $a % $b;
+            $a = $temp;
+    }
         return abs($a);
 }
 
@@ -18,8 +19,8 @@ function getDescription()
 
 function generateRound()
 {
-     	$num1 = rand(1, 100);
-        $num2 =rand(1, 100);
+        $num1 = rand(1, 100);
+        $num2 = rand(1, 100);
 
         $question = "{$num1} {$num2}";
         $result = findGcd($num1, $num2);

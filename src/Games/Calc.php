@@ -1,4 +1,5 @@
 <?php
+
 namespace BrainGames\Games\Calc;
 
 function getDescription()
@@ -15,18 +16,18 @@ function generateRound()
 
         $question = "{$num1} {$operator} {$num2}";
 
-        switch ($operator) {
-                case '+':
-                        $result = $num1 + $num2;
-                        break;
-                case '-':
-                        $result = $num1 - $num2;
-                        break;
-                case '*':
-                        $result = $num1 * $num2;
-                        break;
-                default:
-                        $result = 0;
-        }
+    switch ($operator) {
+        case '+':
+                $result = $num1 + $num2;
+            break;
+        case '-':
+                $result = $num1 - $num2;
+            break;
+        case '*':
+                $result = $num1 * $num2;
+            break;
+        default:
+                $result = 0;
+    }
         return [$question, $result];
 }

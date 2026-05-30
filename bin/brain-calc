@@ -1,52 +1,10 @@
 #!/usr/bin/env php
 <?php
 
-namespace BrainGames\calc;
-
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../src/Cli.php';
 
-use function cli\line;
-use function cli\prompt;
+use function BrainGames\Engine\run;
+use function BrainGames\Games\Calc\getDescription;
+use function BrainGames\Games\Calc\generateRound;
 
-function generateRound()
-{
-        $operations = ['+', '-', '*'];
-        $num1 = rand(1, 30);
-        $num2 = rand(1, 30);
-        $operator = $operations[array_rand($operations)];
-
-        $question = "{$num1} {$operator} {$num2}";
-
-        switch ($operator) {
-                case '+':
-                        $result = $num1 + $num2;
-                        break;
-                case '-':
-                        $result = $num1 - $num2;
-                        break;
-                case '*':
-                        $result = $num1 * $num2;
-                        break;
-                default:
-                        $result = 0;
-        }
-        return [$question, $result];
-}
-
-$rounds = 3;
-for ($i = 0; $i < $rounds; $i++) {
-        [$question, $result] = generateRound();
-	line("What is the result of the expression?");
-        line("Question: %s", $question);
-        $answer = prompt('Your answer: ');
-        if ($answer == $result) {
-                line("Correct!\n");
-        } else {
-                line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $result);
-                line("Let's try again, %s!", $name);
-                return;
-        }
-}
-
-line("Congratulations, %s!", $name);
+run(getDescription(), 'BrainGames\Games\Calc\generateRound');

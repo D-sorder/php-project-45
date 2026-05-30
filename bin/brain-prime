@@ -1,58 +1,10 @@
 #!/usr/bin/env php
 <?php
 
-namespace BrainGames\even;
-
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../src/Cli.php';
 
-use function cli\line;
-use function cli\prompt;
+use function BrainGames\Engine\run;
+use function BrainGames\Games\Prime\getDescription;
+use function BrainGames\Games\Prime\generateRound;
 
-function isPrime ($num)
-{
-	if ($num < 2) {
-		return false;
-	}
-
-	for ($i = 2; $i * $i <= $num; $i++) {
-		if ($num % $i === 0) {
-			return false;
-		}
-	}
-
-	return true;
-}
-
-function makeRound () 
-{
-	$round = rand(0, 100);
-
-	if (isPrime($round)) {
-		$answer = 'yes';
-	} else {
-		$answer = 'no';
-	}
-
-	return [$round, $answer];
-}
-
-line('Answer "yes" if given number is prime. Otherwise answer "no".');
-
-$rounds = 3;
-
-for ($i = 0; $i < $rounds; $i++) {
-	[$num, $rightAnswer] = makeRound();
-
-	line("Question: %s", $num);
-	$userAnswer = prompt("Your answer");
-	if ($userAnswer === $rightAnswer) {
-		line('Correct!');
-	} else {
-		line("'%s' is a wrong answer ;(. Correct answer was '%s'", $userAnswer, $rightAnswer);
-		line("Let's try again, %s!", $name);
-		return;
-	}
-}
-
-line("Congratulations, %s!", $name);
+run(getDescription(), 'BrainGames\Games\Prime\generateRound');

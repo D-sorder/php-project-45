@@ -1,37 +1,11 @@
 #!/usr/bin/env php
 <?php
 
-namespace BrainGames\even;
-
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../src/Cli.php';
 
-use function cli\line;
-use function cli\prompt;
+use function BrainGames\Engine\run;
+use function BrainGames\Games\Even\getDescription;
+use function BrainGames\Games\Even\generateRound;
 
-function isEven(int $num): bool 
-{
-	return $num % 2 === 0;
-}
+run(getDescription(), 'BrainGames\Games\Even\generateRound');
 
-line ('Answer "yes" if the number is even, otherwise answer "no".');
-
-$numbers = [15, 6, 7];
-
-foreach ($numbers as $num) {
-	line("Question: %s?", $num);
-	$correctAnsw = isEven($num) ? "yes" : "no";
-	$answ = prompt("Your answer: ");
-	$correct = 0;
-	if ($answ === $correctAnsw) {
-		line('Correct!');
-		$correct++;
-	} else {
-		line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answ, $correctAnsw);
-		line("Let's try again, %s!", $name);
-		exit(0);
-	};
-
-}
-
-line("Congratulations, %s!", $name);

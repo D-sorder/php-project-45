@@ -2,15 +2,24 @@
 
 namespace BrainGames\Games\Even;
 
-function getDescription()
+use function BrainGames\Engine\run;
+
+const DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
+const MIN_NUM = 1;
+const MAX_NUM = 100;
+
+function isEven (int $num): bool
 {
-    return 'Answer "yes" if the number is even, otherwise answer "no".';
+    return $num % 2 === 0;
 }
 
-function generateRound()
+function runEven(): null
 {
-    $num = rand(1, 100);
-    $question = (string)$num;
-    $correctAnswer = $num % 2 === 0 ? 'yes' : 'no';
-    return [$question, $correctAnswer];
+    $generateRound = function (): array {
+	$number = rand(1, 100);
+        $correctAnswer = isEven($number) ? 'yes' : 'no';
+	return [$number, (string)$correctAnswer];
+    };
+
+    return run(DESCRIPTION, $generateRound);
 }

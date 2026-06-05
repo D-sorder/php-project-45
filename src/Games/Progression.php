@@ -2,21 +2,30 @@
 
 namespace BrainGames\Games\Progression;
 
-function getDescription()
-{
-        return 'What number is missing in the progression?';
-}
+use function BrainGames\Engine\run;
 
-function generateRound()
+const DESCRIPTION = 'What number is missing in the progression?';
+
+const MIN_LENGTH = 6;
+const MAX_LENGTH = 15;
+
+const MIN_STEP = 2;
+const MAX_STEP = 5;
+
+const MIN_START = 1;
+const MAX_START = 15;
+
+function runProgression (): null
 {
-        $progressionLength = rand(6, 15);
-        $step = rand(2, 5);
-        $start = rand(1, 15);
+    $generateRound = function (): array {
+        $progressionLength = rand(MIN_LENGTH, MAX_LENGTH);
+        $step = rand(MIN_STEP, MAX_STEP);
+        $start = rand(MIN_START, MAX_START);
 
         $progression = [];
-    for ($i = 1; $i < $progressionLength; $i++) {
+        for ($i = 1; $i < $progressionLength; $i++) {
             $progression[] = $start + $i * $step;
-    }
+        }
 
         $hiddenIndex = array_rand($progression);
 
@@ -25,5 +34,8 @@ function generateRound()
 
         $question = implode(' ', $progression);
 
-        return [$question, $correctAnswer];
+        return [$question, (string)$correctAnswer];
+    };
+
+    return run(DESCRIPTION, $generateRound);
 }

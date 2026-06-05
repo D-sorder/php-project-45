@@ -2,21 +2,16 @@
 
 namespace BrainGames\Games\Calc;
 
-function getDescription()
+use function BrainGames\Engine\run;
+
+const DESCRIPTION = "What is the result of the expression?";
+const MIN_NUM = 0;
+const MAX_NUM = 30;
+const OPERATORS = ['+', '-', '*'];
+
+function calculate (string $oper, int $num1, int $num2): int
 {
-        return "What is the result of the expression?";
-}
-
-function generateRound()
-{
-        $operations = ['+', '-', '*'];
-        $num1 = rand(1, 30);
-        $num2 = rand(1, 30);
-        $operator = $operations[array_rand($operations)];
-
-        $question = "{$num1} {$operator} {$num2}";
-
-    switch ($operator) {
+    switch ($oper) {
         case '+':
                 $result = $num1 + $num2;
             break;
@@ -29,5 +24,21 @@ function generateRound()
         default:
                 $result = 0;
     }
-        return [$question, $result];
+
+    return $result;
+}
+
+function runCalc(): null
+{
+    $generateRound = function (): array {
+	$num1 = rand(MIN_NUM, MAX_NUM);
+	$num2 = rand(MIN_NUM, MAX_NUM);
+        $operator = OPERATORS[array_rand(OPERATORS)];
+
+        $question = "{$num1} {$operator} {$num2}";
+
+        $answer = calculate($operator, $num1, $num2);
+        return [$question, (string)$answer];
+    };
+    return run(DESCRIPTION, $generateRound);
 }

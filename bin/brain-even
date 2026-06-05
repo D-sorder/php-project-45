@@ -1,11 +1,16 @@
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+use function BrainGames\Games\Even\runEven;
 
-use function BrainGames\Engine\run;
-use function BrainGames\Games\Even\getDescription;
-use function BrainGames\Games\Even\generateRound;
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
 
-run(getDescription(), 'BrainGames\Games\Even\generateRound');
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
+}
+
+runEven();
 

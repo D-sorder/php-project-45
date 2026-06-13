@@ -2,11 +2,27 @@
 
 namespace BrainGames\Games\Prime;
 
-use function BrainGames\Engine\run;
+use function BrainGames\Engine\runGame;
 
 const DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const MIN_NUM = 0;
 const MAX_NUM = 100;
+
+function run(): null
+{
+    $generateRound = function(): array {
+        $round = rand(MIN_NUM, MAX_NUM);
+
+        if (isPrime($round)) {
+            $answer = 'yes';
+        } else {
+            $answer = 'no';
+        }
+
+        return [$round, $answer];
+    };
+    return run(DESCRIPTION, $generateRound);
+}
 
 function isPrime(int $num): bool
 {
@@ -21,20 +37,4 @@ function isPrime(int $num): bool
     }
 
     return true;
-}
-
-function runPrime (): null
-{
-    $generateRound = function(): array {
-        $round = rand(MIN_NUM, MAX_NUM);
-
-        if (isPrime($round)) {
-            $answer = 'yes';
-        } else {
-            $answer = 'no';
-        }
-
-        return [$round, (string)$answer];
-    };
-    return run(DESCRIPTION, $generateRound);
 }

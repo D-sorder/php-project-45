@@ -3,26 +3,23 @@
     "description": "jst4learningxdxd",
     "license": "MIT",
     "autoload": {
-	"files": [
-		"src/Cli.php",
-		"src/Engine.php",
-		"src/Games/Even.php",
-		"src/Games/Calc.php",
-		"src/Games/Gcd.php",
-		"src/Games/Prime.php",
-		"src/Games/Progression.php"
-	],
-        "psr-4": {
-            "BrainGames\\": "src/"
-        }
+        "files": [
+            "src/Cli.php",
+            "src/Engine.php",
+            "src/Games/Even.php",
+            "src/Games/Calc.php",
+            "src/Games/Gcd.php",
+            "src/Games/Prime.php",
+            "src/Games/Progression.php"
+        ],
     },
     "bin": [
-    	"bin/brain-games",
-	"bin/brain-even",
-	"bin/brain-calc",
-	"bin/brain-gcd",
-	"bin/brain-progression",
-	"bin/brain-prime"
+        "bin/brain-games",
+        "bin/brain-even",
+        "bin/brain-calc",
+        "bin/brain-gcd",
+        "bin/brain-progression",
+        "bin/brain-prime"
     ],
     "authors": [
         {

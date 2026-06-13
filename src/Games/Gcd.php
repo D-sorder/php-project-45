@@ -2,23 +2,13 @@
 
 namespace BrainGames\Games\Gcd;
 
-use function BrainGames\Engine\run;
+use function BrainGames\Engine\runGame;
 
 const DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 const MIN_NUM = 1;
 const MAX_NUM = 100;
 
-function findGcd (int $a, int $b): int
-{
-    while ($b !== 0) {
-        $temp = $b;
-        $b = $a % $b;
-        $a = $temp;
-    }
-    return abs($a);
-}
-
-function runGcd (): null
+function run(): null
 {
     $generateRound = function (): array {
         $num1 = rand(MIN_NUM, MAX_NUM);
@@ -30,4 +20,14 @@ function runGcd (): null
         return [$question, (string)$result];
     };
     return run(DESCRIPTION, $generateRound);
+}
+
+function findGcd (int $a, int $b): int
+{
+    while ($b !== 0) {
+        $temp = $b;
+        $b = $a % $b;
+        $a = $temp;
+    }
+    return abs($a);
 }

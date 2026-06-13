@@ -15,7 +15,7 @@ const MAX_STEP = 5;
 const MIN_START = 1;
 const MAX_START = 15;
 
-function run(): null
+function run(): void
 {
     $generateRound = function (): array {
         $progressionLength = rand(MIN_LENGTH, MAX_LENGTH);
@@ -37,5 +37,5 @@ function run(): null
         return [$question, (string)$correctAnswer];
     };
 
-    return run(DESCRIPTION, $generateRound);
+    runGame(DESCRIPTION, $generateRound);
 }

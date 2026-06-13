@@ -8,7 +8,7 @@ const DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no
 const MIN_NUM = 0;
 const MAX_NUM = 100;
 
-function run(): null
+function run(): void
 {
     $generateRound = function(): array {
         $round = rand(MIN_NUM, MAX_NUM);
@@ -21,7 +21,7 @@ function run(): null
 
         return [$round, $answer];
     };
-    return run(DESCRIPTION, $generateRound);
+    runGame(DESCRIPTION, $generateRound);
 }
 
 function isPrime(int $num): bool

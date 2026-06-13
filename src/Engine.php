@@ -7,7 +7,7 @@ use function cli\prompt;
 
 const ROUNDS_COUNT = 3;
 
-function runGame(string $description, callable $generateRound): null
+function runGame(string $description, callable $generateRound): void
 {
     line('Welcome to the Brain Games!');
     $name = prompt('May I have your name?');
@@ -21,9 +21,10 @@ function runGame(string $description, callable $generateRound): null
         if ($answer !== $correctAnswer) {
             line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $correctAnswer);
             line("Let's try again, %s!", $name);
-            return null;
+            return;
         }
         line("Correct!");
     }
     line("Congratulations, %s!", $name);
 }
+
